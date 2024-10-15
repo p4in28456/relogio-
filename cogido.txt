@@ -1,0 +1,22 @@
+import tkinter as tk
+import time
+
+def atualizar_relogio():
+    """ relógio atualiza a cada segundo."""
+    tempo_atual = time.strftime('%H:%M:%S')  # Formata o tempo atual
+    rotulo_relogio.config(text=tempo_atual)  # Atualiza o texto do rótulo
+    rotulo_relogio.after(1000, atualizar_relogio)  # Chama a função novamente após 1 segundo
+
+# Criação da janela principal
+janela = tk.Tk()
+janela.title("Relógio Digital")
+
+# Criação do rótulo para exibir o relógio
+rotulo_relogio = tk.Label(janela, font=('calibri', 40, 'bold'), background='black', foreground='white')
+rotulo_relogio.pack(anchor='center')
+
+# Inicia a atualização do relógio
+atualizar_relogio()
+
+# Mantém a janela aberta
+janela.mainloop()
